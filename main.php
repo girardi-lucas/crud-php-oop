@@ -8,4 +8,5 @@ $administrador = new Administrador("Rogerio", "rogerio@gmail.com", "5499999999",
 
 
 $administrador->apresentarUsuario();
-echo $cliente->getEmail();
+echo "\n";
+$cliente->apresentarUsuario();
