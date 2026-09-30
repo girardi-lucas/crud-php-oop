@@ -25,6 +25,7 @@ class Usuario {
     }
 
     public function setEmail($email) {
+        $email = filter_var($email, FILTER_SANITIZE_EMAIL);
         $this->email = $email;
     }
 
