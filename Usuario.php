@@ -5,6 +5,12 @@ class Usuario {
     private $email;
     private $telefone;
 
+    public function __construct($nome, $email, $telefone) {
+        $this->setNome($nome);
+        $this->setEmail($email);
+        $this->setTelefone($telefone);
+    }
+
     // Getters e Setters
 
     public function getNome() {
@@ -32,8 +38,7 @@ class Usuario {
 
     // Apresentação do usuário
 
-    public function apresentar(){
+    public function apresentarUsuario(){
         echo "Olá, meu nome é $this->nome, meu email é $this->email e meu telefone é $this->telefone.";
     }
 }
-

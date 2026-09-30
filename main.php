@@ -2,9 +2,6 @@
 
 require_once 'Usuario.php';
 
-$cliente = new Usuario();
-$cliente->setNome("Lucas");
-$cliente->setEmail("lucasbgirardi@gmail.com");
-$cliente->setTelefone("11999999999");
+$cliente = new Usuario("sanfona", "lucas@gmail.com", "5454545454");
 
-$cliente->apresentar();
+echo $cliente->getNome();
