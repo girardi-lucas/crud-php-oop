@@ -2,11 +2,14 @@
 
 require_once 'Usuario.php';
 require_once 'Administrador.php';
+require_once 'Cliente.php';
 
-$cliente = new Usuario("sanfona", "lucas@gmail.com", "5454545454");
-$administrador = new Administrador("Rogerio", "rogerio@gmail.com", "5499999999", "Master");
+$administrador = new Administrador("Rogerio", "rogerio@gmail.com", "5499999999", "09987609209");
+$clienteUm = new Cliente("Lucao", "lucas@gemail.com.br", "540190312", "00673018008");
 
+$listaDeUsuarios = [$administrador, $clienteUm];
 
-$administrador->apresentarUsuario();
-echo "\n";
-$cliente->apresentarUsuario();
+foreach ($listaDeUsuarios as $usuario) {
+    $usuario->apresentarUsuario();
+    echo "\n";
+}
