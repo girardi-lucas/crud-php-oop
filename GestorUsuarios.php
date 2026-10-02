@@ -1,30 +1,27 @@
 <?php
 
-class GestorUsuarios
+class GestorUsuarios implements Crud
 {
 
     private $listaUsuarios = [];
 
-    public function adicionarUsuario(Usuario $usuario)
+    public function cadastrar(Usuario $usuario)
     {
         $this->listaUsuarios[] = $usuario;
     }
 
-    public function contarUsuarios()
+    public function listar()
     {
-        $totalUsuarios = count($this->listaUsuarios);
-        return $totalUsuarios;
+        return $this->listaUsuarios;
     }
 
-    public function mostrarUsuarios()
+    public function atualizar($cpf, $novoNome, $novoEmail, $novoTelefone)
     {
-        if (empty($this->listaUsuarios)) {
-            echo "Nenhum usuário cadastrado.\n";
-            return;
-        }
-        foreach ($this->listaUsuarios as $usuario) {
-            $usuario->apresentarUsuario();
-            echo "\n";
-        }
+
+    }
+
+    public function deletar()
+    {
+        // Implementation for deleting a user
     }
 }
