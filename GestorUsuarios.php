@@ -8,6 +8,7 @@ class GestorUsuarios implements Crud
     public function cadastrar(Usuario $usuario)
     {
         $this->listaUsuarios[] = $usuario;
+        echo "Usuário cadastrado com sucesso: " . $usuario->getNome() . "\n";
     }
 
     public function listar()
@@ -15,7 +16,7 @@ class GestorUsuarios implements Crud
         return $this->listaUsuarios;
     }
 
-    public function atualizar($cpf, $novoNome, $novoEmail, $novoTelefone)
+    public function atualizar()
     {
 
     }

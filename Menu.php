@@ -1,8 +1,14 @@
 <?php
-require_once 'GestorUsuarios.php';
 
 class Menu
 {
+    private $gestorUsuarios;
+
+    public function __construct(GestorUsuarios $gestorUsuarios)
+    {
+        $this->gestorUsuarios = $gestorUsuarios;
+    }
+
     public function abrirMenu(){
         $opcao = '';
         while ($opcao !== '0') {
@@ -16,7 +22,8 @@ class Menu
 
         switch ($opcao) {
             case '1':
-                $this->cadastrarUsuario();
+                $cliente = $this->cadastrarUsuario();
+                $this->gestorUsuarios->cadastrar($cliente);
                 break;
             case '2':
                 $this->listarUsuarios();
@@ -36,4 +43,15 @@ class Menu
     }
 
 }
+    public function cadastrarUsuario() {
+        echo "Cadastro de Usuário:\n";
+        $nome = readline("Digite o nome: ");
+        $email = readline("Digite o email: ");
+        $telefone = readline("Digite o telefone: ");
+        $cpf = readline("Digite o CPF: ");
+
+        $cliente = new Cliente($nome, $email, $telefone, $cpf);
+
+        return $cliente;
+    }
 }
