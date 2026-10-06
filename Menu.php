@@ -23,11 +23,14 @@ class Menu
         switch ($opcao) {
             case '1':
                 $cliente = $this->cadastrarUsuario();
+                if ($cliente === null) {
+                    echo "Cadastro cancelado devido a dados inválidos.\n";
+                    break;
+                }
                 $this->gestorUsuarios->cadastrar($cliente);
                 break;
             case '2':
                 $this->listarUsuarios();
-                $this->gestorUsuarios->listar();
                 break;
             case '3':
                 $this->editarUsuario();
@@ -46,10 +49,45 @@ class Menu
 }
     public function cadastrarUsuario() {
         echo "Cadastro de Usuário:\n";
+
         $nome = readline("Digite o nome: ");
+        if (empty($nome)) {
+            echo "Nome não pode ser vazio. Cadastro cancelado.\n";
+            return null;
+        } else if (strlen($nome) < 3) {
+            echo "Nome deve ter pelo menos 3 caracteres. Cadastro cancelado.\n";
+            return null;
+        } else if (!preg_match("/^[a-zA-Z\s]+$/", $nome)) {
+            echo "Nome deve conter apenas letras e espaços. Cadastro cancelado.\n";
+            return null;
+        }
+
         $email = readline("Digite o email: ");
+        if (empty($email)) {
+            echo "Email não pode ser vazio. Cadastro cancelado.\n";
+            return null;
+        } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo "Email inválido. Cadastro cancelado.\n";
+            return null;
+        }
+
         $telefone = readline("Digite o telefone: ");
+        if (empty($telefone)) {
+            echo "Telefone não pode ser vazio. Cadastro cancelado.\n";
+            return null;
+        } else if (!preg_match("/^\d{10,11}$/", $telefone)) {
+            echo "Telefone inválido. Deve conter apenas números e ter 10 ou 11 dígitos. Cadastro cancelado.\n";
+            return null;
+        }
+
         $cpf = readline("Digite o CPF: ");
+        if (empty($cpf)) {
+            echo "CPF não pode ser vazio. Cadastro cancelado.\n";
+            return null;
+        } else if (!preg_match("/^\d{11}$/", $cpf)) {
+            echo "CPF inválido. Deve conter apenas números e ter 11 dígitos. Cadastro cancelado.\n";
+            return null;
+        }
 
         $cliente = new Cliente($nome, $email, $telefone, $cpf);
 
@@ -81,10 +119,49 @@ class Menu
             echo "Usuário inválido.\n";
             return;
         } else {
+
             $nome = readline("Digite o novo nome: ");
+            if (empty($nome)) {
+                echo "Nome não pode ser vazio. Cadastro cancelado.\n";
+                return null;
+            } else if (strlen($nome) < 3) {
+                echo "Nome deve ter pelo menos 3 caracteres. Cadastro cancelado.\n";
+                return null;
+            } else if (!preg_match("/^[a-zA-Z\s]+$/", $nome)) {
+                echo "Nome deve conter apenas letras e espaços. Cadastro cancelado.\n";
+                return null;
+            }
+
             $email = readline("Digite o novo email: ");
+
+            if (empty($email)) {
+                echo "Email não pode ser vazio. Cadastro cancelado.\n";
+                return null;
+            } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                echo "Email inválido. Cadastro cancelado.\n";
+                return null;
+            }
+
             $telefone = readline("Digite o novo telefone: ");
+
+            if (empty($telefone)) {
+                echo "Telefone não pode ser vazio. Cadastro cancelado.\n";
+                return null;
+            } else if (!preg_match("/^\d{10,11}$/", $telefone)) {
+                echo "Telefone inválido. Deve conter apenas números e ter 10 ou 11 dígitos. Cadastro cancelado.\n";
+                return null;
+            }
+
             $cpf = readline("Digite o novo CPF: ");
+
+            if (empty($cpf)) {
+                echo "CPF não pode ser vazio. Cadastro cancelado.\n";
+                return null;
+            } else if (!preg_match("/^\d{11}$/", $cpf)) {
+                echo "CPF inválido. Deve conter apenas números e ter 11 dígitos. Cadastro cancelado.\n";
+                return null;
+            }
+
         }
 
         $usuarioAtualizado = new Cliente($nome, $email, $telefone, $cpf);
