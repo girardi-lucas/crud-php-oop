@@ -106,6 +106,10 @@ class Menu
     }
 
     public function editarUsuario() {
+        if (empty($this->gestorUsuarios->listar())) {
+            echo "Nenhum usuário cadastrado.\n";
+            return;
+        }
         $usuarios = $this->gestorUsuarios->listar();
         foreach ($usuarios as $indice => $usuario) {
             echo ($indice + 1) . " - Nome: " . $usuario->getNome() . "\n";
