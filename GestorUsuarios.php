@@ -14,15 +14,19 @@ class GestorUsuarios implements Crud
     public function listar()
     {
         return $this->listaUsuarios;
-    }
-
-    public function atualizar()
-    {
 
     }
 
-    public function deletar()
+    public function atualizar($indice, Usuario $usuario)
     {
-        // Implementation for deleting a user
+        $this->listaUsuarios[$indice] = $usuario;
+        echo "Usuário atualizado com sucesso: " . $usuario->getNome() . "\n";
+    }
+
+    public function deletar($indice)
+    {
+        unset($this->listaUsuarios[$indice]);
+        $this->listaUsuarios = array_values($this->listaUsuarios); // Reindexa o array após a exclusão
+        echo "Usuário deletado com sucesso.\n";
     }
 }
