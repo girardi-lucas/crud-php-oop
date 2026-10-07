@@ -2,8 +2,7 @@
 
 class Administrador extends Usuario
 {
-    // No modificador "private" somente a classe pode visualizar e invocar a variavel.
-    // No modificador "protected", as classes filhas conseguem acessar tambem.
+
    public $nivelDeAcesso;
     public function __construct($nome, $email, $telefone, $cpf){
         parent::__construct($nome, $email, $telefone, $cpf);
