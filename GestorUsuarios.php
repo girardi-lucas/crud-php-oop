@@ -13,6 +13,7 @@ class GestorUsuarios implements Crud
 
     public function listar()
     {
+        echo "Lista de usuários:\n";
         return $this->listaUsuarios;
 
     }

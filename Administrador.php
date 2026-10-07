@@ -3,7 +3,7 @@
 class Administrador extends Usuario
 {
 
-   public $nivelDeAcesso;
+   protected $nivelDeAcesso;
     public function __construct($nome, $email, $telefone, $cpf){
         parent::__construct($nome, $email, $telefone, $cpf);
         $this->nivelDeAcesso = "Master";
